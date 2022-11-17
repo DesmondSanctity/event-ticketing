@@ -11,6 +11,8 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.0.12",
     "@chakra-ui/react": "^2.4.1",
+    "@cloudinary/react": "^1.6.0",
+    "@cloudinary/url-gen": "^1.8.6",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@xata.io/client": "^0.20.2",
