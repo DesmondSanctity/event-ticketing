@@ -13,7 +13,8 @@ import {
     Icon,
     Button,
     useColorModeValue,
-    useDisclosure
+    useDisclosure,
+    useToast
 } from '@chakra-ui/react'
 
 
@@ -27,10 +28,71 @@ const CreateModal = () => {
     const [company, setCompany] = useState('')
     const [jobtitle, setJobTitle] = useState('')
 
+    // Instance of toast
+    const toast = useToast()
+
     // Button bgColor color
     const bgColor = useColorModeValue("pink.400", "pink.500");
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        // Handling empty input error
+        if (firstname == '' || lastname == '' || email == '') {
+            toast({
+                title: 'Empty Fields.',
+                description: "All or some inputs are empty.",
+                status: 'warning',
+                duration: 5000,
+                position: 'top',
+                isClosable: true,
+            })
+        } else {
+            // Generate ticket id using
+            const ticketid = '';
+
+
+            //Generate social card
+            const socialImage = generateSocialImage({
+                firstname: firstname,
+                lastname: lastname,
+                ticketid: ticketid,
+                country: country,
+                company: company,
+                email: email,
+                jobtitle: jobtitle,
+                cloudName: 'dqwrnan7f',
+                imagePublicID: 'dex/example-black_iifqhm',
+            });
+            console.log(socialImage);
+
+            //Make add create request
+            let ticket = {
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                country: country,
+                company: company,
+                ticketid: ticketid,
+                imageurl: socialImage,
+                jobtitle: jobtitle,
+                iscoming: true
+            }
+
+            const response = await fetch('/api/create', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(ticket)
+            })
+
+            if (response.ok) {
+                toast.success("post created successfully", {
+                    theme: "dark",
+                    autoClose: 8000
+                })
+                window?.location.replace('/share')
+            }
+        }
 
     }
 
