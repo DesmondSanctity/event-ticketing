@@ -10,12 +10,14 @@ import {
   Image
 } from "@chakra-ui/react";
 
+import CreateModal  from "../components/createModal";
+
 export default function Home() {
   // Button bgColor color
   const bgColor = useColorModeValue("pink.400", "pink.500");
 
   return (
-    <Box px={10} py={20} mx="auto">
+    <Box px={10} mt={5} mx="auto">
       <Box
         w={{ base: "full", md: 11 / 12, xl: 9 / 12 }}
         mx="auto"
@@ -50,7 +52,7 @@ export default function Home() {
           An event ticketing application featuring <a href="https://nextjs.org/">Nextjs</a> the react framework
           for production, <a href="https://chakra-ui.com/">Chakra-UI</a>{" "}
           an open source UI library and design system for building user interfaces{" "}
-          <a href="https://wagmi-xyz.vercel.app/"> & Cloudinary </a> a media transformation and 
+          <a href="https://wagmi-xyz.vercel.app/"> & Cloudinary </a> a media transformation and
           optimization tool.
         </chakra.p>
         <Box
@@ -58,7 +60,7 @@ export default function Home() {
           mx="auto"
           mb={5}
         >
-          <Image src='xata-conf-mock2.jpg' fallbackSrc='https://via.placeholder.com/150' />
+          <Image src='xata-conf-mock2.jpg' borderRadius={30} fallbackSrc='https://via.placeholder.com/150' />
         </Box>
         <Stack
           direction={{ base: "column", sm: "row" }}
@@ -66,6 +68,7 @@ export default function Home() {
           spacing={2}
           justifyContent={{ sm: "left", md: "center" }}
         >
+          <CreateModal />
           <Button
             as="a"
             borderRadius="2xl"
@@ -78,9 +81,9 @@ export default function Home() {
             mb={{ base: 2, sm: 0 }}
             size="lg"
             cursor="pointer"
-            href="https://github.com/SabeloMkhwanzi/Nextjs-Chakra-ui-Wagmi"
+            href="#"
           >
-            Get Started
+            View Tickets
             <Icon boxSize={4} ml={1} viewBox="0 0 20 20" fill="currentColor">
               <path
                 fillRule="evenodd"
